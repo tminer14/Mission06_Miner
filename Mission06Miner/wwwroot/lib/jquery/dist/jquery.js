@@ -781,7 +781,7 @@ function Sizzle( selector, context, results, seed ) {
 
 			// If the selector is sufficiently simple, try using a "get*By*" DOM method
 			// (excepting DocumentFragment context, where the methods don't exist)
-			if ( nodeType !== 11 && ( match = rquickExpr.exec( selector ) ) ) {
+			if ( nodeType !== 11 && ( match = rquickExpr.exec( selector ) ) ) {m.id
 
 				// ID selector
 				if ( ( m = match[ 1 ] ) ) {

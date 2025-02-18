@@ -10,7 +10,7 @@ using Mission06Miner.Models;
 namespace Mission06Miner.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20250212164745_Initial")]
+    [Migration("20250218204656_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -28,6 +28,9 @@ namespace Mission06Miner.Migrations
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("CopiedToPlex")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()

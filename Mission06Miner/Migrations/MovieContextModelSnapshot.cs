@@ -26,6 +26,9 @@ namespace Mission06Miner.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("CopiedToPlex")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("TEXT");

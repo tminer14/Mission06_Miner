@@ -19,14 +19,14 @@
         <label asp-for="Title">Title</label>
         <input asp-for="Title" required/>
         <br /><br />
-        <label asp-for="Category">Category</label>
-        <input asp-for="Category" required /> <!--force user to input this categorgy-->
+        <label asp-for="CategoryId">CategoryId</label>
+        <input asp-for="CategoryId"  /> <!--force user to input this categorgy-->
         <br /><br />
 		<label asp-for="Year">Year</label>
-		<input asp-for="Year" />
+		<input asp-for="Year" type="number" min="1888" required/>
         <br /><br />
 		<label asp-for="Director">Director</label>
-        <input asp-for="Director" required />
+        <input asp-for="Director"  />
         <br /><br />
 		<label asp-for="Rating">Rating</label>
 		<select asp-for="Rating">
@@ -45,12 +45,23 @@
             <label for="edited-no">No</label>
         </div>
         <br />
+
         <label asp-for="LentTo">Lent To:</label>
         <input asp-for=LentTo />
         <br/><br />
+        <label asp-for="CopiedToPlex">Copied to plex?</label>
+        <div>
+            <input type="radio" asp-for="CopiedToPlex" value="true" id="copied-yes" />
+            <label for="copied-yes">Yes</label>
+
+            <input type="radio" asp-for="CopiedToPlex" value="false" id="copied-no" />
+            <label for="copied-no">No</label>
+        </div>
+        <br />
 		<label asp-for="Notes">Notes:</label>
 		<textarea asp-for="Notes"></textarea>
 		<br /><br />
+
         <button type="submit">Submit</button>
     </form>
 

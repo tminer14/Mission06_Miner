@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06Miner.Models;
 
 namespace Mission06Miner.Controllers
@@ -41,6 +42,17 @@ namespace Mission06Miner.Controllers
             //show confirmatin page
             return View("Confirmation");
 
+        }
+
+        public IActionResult MovieList()
+        {
+            var movielist = _context.Movies
+            //.Include(x => x.Categories)
+            .OrderBy(x => x.MovieId).ToList();
+
+
+
+            return View(movielist);
         }
 
     }

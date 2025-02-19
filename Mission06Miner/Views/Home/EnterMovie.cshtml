@@ -15,12 +15,23 @@
     <!--Put in inputs for the user-->
     <h1>Enter a Movie:</h1>
     <br />
+
     <form method="post">
+
+		<input type="hidden" asp-for="MovieId"/>
+
         <label asp-for="Title">Title</label>
         <input asp-for="Title" required/>
         <br /><br />
-        <label asp-for="CategoryId">CategoryId</label>
-        <input asp-for="CategoryId"  /> <!--force user to input this categorgy-->
+
+        <label asp-for="CategoryId">Category</label>
+        <select>
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
         <br /><br />
 		<label asp-for="Year">Year</label>
 		<input asp-for="Year" type="number" min="1888" required/>

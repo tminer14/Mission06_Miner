@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission06Miner.Models;
@@ -29,8 +30,13 @@ namespace Mission06Miner.Controllers
         [HttpGet]
         public IActionResult EnterMovie()
         {
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
             return View();
         }
+
         [HttpPost]
         public IActionResult EnterMovie(Movie response)
         {
@@ -55,5 +61,25 @@ namespace Mission06Miner.Controllers
             return View(movielist);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+            return View("EnterMovie", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Movie response)
+        {
+            _context.Movies.Update(response);
+            _context.SaveChanges();
+            return RedirectToAction("MovieList");
+        }
     }
 }

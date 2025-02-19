@@ -11,5 +11,6 @@ namespace Mission06Miner.Models
         { 
         }
             public DbSet<Movie> Movies { get; set; }
+            public DbSet<Category> Categories { get; set; }
     }
 }

@@ -5,18 +5,20 @@
 }
 @model List<Movie> //(application in the example video)
 
-<table class="table">
-	<tr>
-        <td>Category ID</td>
-        <td>Title</td>
-        <td>Year</td>
-        <td>Director</td>
-        <td>Rating</td>
-        <td>Edited</td>
-        <td>Lent To</td>
-        <td>Copied To Plex</td>
-        <td>Notes</td>
-    </tr>
+<table class="table table-bordered">
+	<thead class="fw-bold"></thead>
+		<tr>
+			<td>Category ID</td>
+			<td>Title</td>
+			<td>Year</td>
+			<td>Director</td>
+			<td>Rating</td>
+			<td>Edited</td>
+			<td>Lent To</td>
+			<td>Copied To Plex</td>
+			<td>Notes</td>
+		</tr>
+	</thead>
 
 	<tbody>
 
@@ -34,8 +36,8 @@
 				<td>@x.CopiedToPlex</td>
 				<td>@x.Notes</td>
 			
-				<td><a class='btn' btn-info asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a></td>
-				<td><a class="btn">Delete</a></td>
+				<td><a class='btn btn-info' asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a></td>
+				<td><a class="btn btn-danger">Delete</a></td>
 			</tr>
 
 	}

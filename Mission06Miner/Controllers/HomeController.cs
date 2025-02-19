@@ -34,26 +34,37 @@ namespace Mission06Miner.Controllers
                 .OrderBy(x => x.CategoryName)
                 .ToList();
 
-            return View();
+            return View(new Movie());
         }
 
         [HttpPost]
         public IActionResult EnterMovie(Movie response)
         {
-  
-            //add and save the reponse
-            _context.Movies.Add(response);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                //add and save the reponse
+                _context.Movies.Add(response);
+                _context.SaveChanges();
 
-            //show confirmatin page
-            return View("Confirmation");
+                //show confirmatin page
+                return View("Confirmation");
+            }
+            else
+            {
+                ViewBag.Categories = _context.Categories
+               .OrderBy(x => x.CategoryName)
+               .ToList();
+
+                return View(response);
+        
+             }
 
         }
 
         public IActionResult MovieList()
         {
             var movielist = _context.Movies
-            //.Include(x => x.Categories)
+            .Include(x => x.Category)
             .OrderBy(x => x.MovieId).ToList();
 
 
@@ -79,6 +90,24 @@ namespace Mission06Miner.Controllers
         {
             _context.Movies.Update(response);
             _context.SaveChanges();
+            return RedirectToAction("MovieList");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View(recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Movie movie)
+        {
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+
             return RedirectToAction("MovieList");
         }
     }

@@ -11,13 +11,14 @@ namespace Mission06Miner.Models
 
         [ForeignKey("CategoryId")]
         public int? CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
         [Required(ErrorMessage = "Title is required.")]
-        public required string Title { get; set; }
+        public string Title { get; set; } 
 
 
         [Required(ErrorMessage = "Year is required.")]
+        [Range(1888, 2025)]
         public int Year { get; set; }
 
         public string? Director { get; set; }
@@ -25,7 +26,8 @@ namespace Mission06Miner.Models
         
         public string? Rating { get; set; }
 
-        public bool? Edited { get; set; }
+        [Required(ErrorMessage = "Edited is required.")]
+        public bool Edited { get; set; }
 
         public string? LentTo { get; set; }
 

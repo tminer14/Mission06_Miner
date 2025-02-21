@@ -10,13 +10,13 @@ namespace Mission06Miner.Models
         public int MovieId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public int? CategoryId { get; set; }
-        public Category? Category { get; set; }
+        public int? CategoryId { get; set; }//set as foreign key
+        public Category? Category { get; set; } //allows me to access related category object
 
         [Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; } 
 
-
+        //set required range for years
         [Required(ErrorMessage = "Year is required.")]
         [Range(1888, 2025)]
         public int Year { get; set; }
@@ -26,10 +26,13 @@ namespace Mission06Miner.Models
         
         public string? Rating { get; set; }
 
+
         [Required(ErrorMessage = "Edited is required.")]
         public bool Edited { get; set; }
 
+
         public string? LentTo { get; set; }
+
 
         [Required(ErrorMessage = "Copied to plex is required.")]
         public bool CopiedToPlex { get; set; }

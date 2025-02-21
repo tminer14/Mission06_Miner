@@ -4,6 +4,7 @@ namespace Mission06Miner.Models
 {
     public class Category
     {
+        //set properties of category object
         [Key]
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }

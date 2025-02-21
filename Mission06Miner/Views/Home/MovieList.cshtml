@@ -8,6 +8,7 @@
 <table class="table table-bordered">
 	<thead class="fw-bold">
 		<tr>
+			<!--display the title of the table-->
 			<td>Category</td>
 			<td>Title</td>
 			<td>Year</td>
@@ -26,6 +27,7 @@
 	{
 	
 			<tr>
+				<!--display the values dynamically-->
 				<td>@x.Category.CategoryName</td>
 				<td>@x.Title</td>
 				<td>@x.Year</td>
@@ -36,7 +38,10 @@
 				<td>@x.CopiedToPlex</td>
 				<td>@x.Notes</td>
 			
+				<!--takes to the edit page when clickec on-->
 				<td><a class='btn btn-info' asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a></td>
+
+				<!--takes to the delete page when clicked on-->
 				<td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
 			</tr>
 
